@@ -1,0 +1,22 @@
+extends layout
+
+//- block content
+//-   h1= title
+//-   p Welcome to #{title}
+
+block content
+  .container
+    .row
+      .col-12
+        h1= title
+      if user
+        .row
+          .col-12
+            p Hi #{user.name}
+        .row
+          .col-12
+            a(href="/logout") Logout
+      else
+        .row
+          .col-12
+            a(class="btn btn-link",, href="/login") Please login !
