@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    include index.pug
+    .container
+        .row
+            h2= sub_title
+            a(href='/itn_add') เพิ่ม
+        .row
+            ul
+                each itn in itn_list
+                    li 
+                        p= itn.name
+                else
+                    li There are no books.
