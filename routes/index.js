@@ -27,7 +27,9 @@ router.get('/docin_list', isLoggedIn, async (req, res, next) => {
 })
 
 router.get('/docin_add', isLoggedIn, async (req, res, next) => {
-  res.render('docin_add', { title: title, user: req.user });
+  const locals = await Localdept.find({});
+  const itns = await Itndept.find({});
+  res.render('docin_add', { title: title, user: req.user, local_list: locals, itn_list: itns });
 })
 
 

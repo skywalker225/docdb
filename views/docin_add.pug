@@ -8,11 +8,11 @@ block content
                 h2 เพิ่มรายการหนังสือรับ
 
                 .form-group
-                    label(for="record" class="sr-only") เลขทะเบียนส่ง:
+                    label(for="record") เลขทะเบียนส่ง:
                     input(type="text" name="record" id="record" class="form-control" placeholder="เลขทะเบียนส่ง" required)
 
                 .form-group
-                    label(for="doc_no" class="sr-only") ที่(หนังสือ):
+                    label(for="doc_no") ที่(หนังสือ):
                     input(type="text" name="doc_no" id="doc_no" class="form-control" placeholder="ที่(หนังสือ)" required)
 
                 .form-group
@@ -20,51 +20,54 @@ block content
                     input(type="date" name="doc_date" id="doc_date" class="form-control" placeholder="วันที่(หนังสือ)" required)
 
                 .form-group
-                    label(for="doc_from" class="sr-only") หนังสือส่งจาก :
-                    //-     for doc_from in doc_froms
-                    //-         option(value=doc_from.name) #{doc_from.name}
-                    input(type="text" name="doc_from" id="doc_from" class="form-control" placeholder="หนังสือส่งจาก" required)
-
+                    label(for="doc_from") หนังสือส่งจาก :
+                    select(name="doc_from", id="doc_from" class="form-control")
+                        each local in local_list
+                            option=local.name
+                            
                 .form-group
                     label(for="doc_to") หนังสือส่งถึง:
-                    select(name="dropDdoc_levelown", id="doc_level" class="form-control")
+                    select(name="doc_to", id="doc_level" class="form-control")
                         each val in ['นายอำเภอ' , 'อื่นๆ']
                             option=val
 
                 .form-group
-                    label(for="doc_title" class="sr-only") หนังสือเรื่อง:
+                    label(for="doc_title") หนังสือเรื่อง:
                     input(type="text" name="doc_title" id="doc_title" class="form-control" placeholder="หนังสือเรื่อง" required)
 
                 .form-group
                     label(for="doc_urgency") ความเร่งด่วน:
-                    select(name="dropDdoc_levelown", id="doc_level" class="form-control")
+                    select(name="doc_urgency", id="doc_level" class="form-control")
                         each val in ['ปกติ' , 'ด่วน' , 'ด่วนมาก' , 'ด่วนที่สุด']
                             option=val
 
                 .form-group
                     label(for="doc_level") ชั้นความลับ:
-                    select(name="dropDdoc_levelown", id="doc_level" class="form-control")
+                    select(name="doc_level", id="doc_level" class="form-control")
                         each val in ['ปกติ' , 'ลับ' , 'ลับมาก' , 'ลับที่สุด']
                             option=val
 
                 .form-group
-                    label(for="responsible" class="sr-only") การปฎิบัติ:
-                    input(type="text" name="responsible" id="responsible" class="form-control" placeholder="การปฎิบัติ" required)
+                    label(for="responsible") การปฎิบัติ:
+                    select(name="responsible", id="responsible" class="form-control")
+                        each itn in itn_list
+                            option=itn.name
+                    //- input(type="text" name="responsible" id="responsible" class="form-control" placeholder="การปฎิบัติ" required)
 
                 .form-group
                     label(for="record_date") วันที่บันทึก:
                     input(type="date" name="record_date" id="record_date" class="form-control" placeholder="วันที่บันทึก" required)
 
                 .form-group
-                    label(for="record_holder" class="sr-only") ผู้ลงบันทึก:
+                    label(for="record_holder") ผู้ลงบันทึก:
                     input(type="text" name="record_holder" id="record_holder" class="form-control" placeholder="ผู้ลงบันทึก" required)
 
                 .form-group
-                    label(for="comment" class="sr-only") หมายเหตุ:
+                    label(for="comment") หมายเหตุ:
                     input(type="text" name="comment" id="comment" class="form-control" placeholder="หมายเหตุ" required)
 
                 .form-group
-                    label(for="doc" class="sr-only") เอกสาร:
+                    label(for="doc") เอกสาร:
                     input(type="text" name="doc" id="doc" class="form-control" placeholder="อัพโหลดเอกสาร" required)
 
                 button(class="btn btn-primary btn-block" type="submit") เพิ่ม

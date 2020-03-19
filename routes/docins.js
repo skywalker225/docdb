@@ -8,18 +8,30 @@ const Docin = require('../models/docin');
 
 router.post('/add', async (req, res, next) => {
 
-    const { name, location } = req.body;
+    const { record, doc_no, doc_date, doc_from, doc_to, doc_title, doc_urgency, doc_level, responsible, record_date, record_holder, comment, doc } = req.body;
   
     // simple validation
-    if (!name || !location) {
-      return res.render('docin_add', { message: 'Please try again!' });
+    if (!record || !doc_no || !doc_date || !doc_from || !doc_to || !doc_title || !doc_urgency || !doc_level || !responsible || !record_date || !record_holder) {
+        return res.render('docin_add', { message: 'Please try again!' });
     }
   
-    const localdept = new Localdept({
-      name
+    const docin = new Docin({
+        record,
+        doc_no,
+        doc_date,
+        doc_from,
+        doc_to,
+        doc_title,
+        doc_urgency,
+        doc_level,
+        responsible,
+        record_date,
+        record_holder,
+        comment,
+        doc
     });
   
-    await localdept.save();
+    await docin.save();
 
     res.redirect('/docin_list');
 });
