@@ -22,6 +22,14 @@ a {
   background-color: #f3f3f3;
 }
 
+.form-doc {
+  width: 100%;
+  max-width: 620px;
+  padding: 2rem;
+  margin: auto;
+  background-color: #f3f3f3;
+}
+
 /* Addition */
 
 .header {

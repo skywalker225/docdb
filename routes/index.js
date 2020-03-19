@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var itn_controller = require('../controllers/itnController.js');
 var Itndept = require('../models/internaldept');
+var Localdept = require('../models/localdept');
+var Docin = require('../models/docin');
+var Docout = require('../models/docout');
+
 var title = 'NN Documents Recorder';
 
 const isLoggedIn = (req, res, next) => {
@@ -16,6 +19,34 @@ router.get('/', isLoggedIn, (req, res, next) => {
   res.render('home', { title: title, user: req.user });
 });
 
+
+// Document In
+router.get('/docin_list', isLoggedIn, async (req, res, next) => {
+  const docins = await Docin.find({});
+  res.render('docin_list', { title: title, user: req.user, sub_title: 'รายชื่อหนังสือรับ', docin_list: docins })
+})
+
+router.get('/docin_add', isLoggedIn, async (req, res, next) => {
+  res.render('docin_add', { title: title, user: req.user });
+})
+
+
+// Document Out
+router.get('/docout_list', isLoggedIn, async (req, res, next) => {
+  const docouts = await Docout.find({});
+  res.render('docout_list', { title: title, user: req.user, sub_title: 'รายชื่อหนังสือส่ง', docout_list: docouts })
+})
+
+
+// Local Dept
+router.get('/local_list', isLoggedIn, async (req, res, next) => {
+  const locals = await Localdept.find({});
+  res.render('local_list', { title: title, user: req.user, sub_title: 'รายชื่อหน่วยงานภายนอก', local_list: locals })
+})
+
+router.get('/local_add', isLoggedIn, (req, res, next) => {
+  res.render('local_add', { title: title, user: req.user });
+});
 
 // Internal Dept
 router.get('/itn_list', isLoggedIn, async (req, res, next) => {

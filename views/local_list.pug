@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    include index.pug
+    .container
+        .row
+            h2= sub_title
+            a(href='/local_add') เพิ่ม
+        .row
+            ul
+                each local in local_list
+                    li 
+                        p= local.name
+                else
+                    li ไม่มีรายชื่อของหน่วยงานภายนอก.

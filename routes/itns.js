@@ -8,11 +8,11 @@ const Itndept = require('../models/internaldept');
 
 router.post('/add', async (req, res, next) => {
 
-    const { username, password, name } = req.body;
+    const { name } = req.body;
   
     // simple validation
     if (!name) {
-      return res.render('register', { message: 'Please try again!' });
+      return res.render('itn_add', { message: 'Please try again!' });
     }
   
     const intdept = new Itndept({

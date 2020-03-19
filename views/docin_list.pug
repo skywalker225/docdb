@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    include index.pug
+    .container
+        .row
+            h2= sub_title
+            a(href='/docin_add') เพิ่ม
+        .row
+            ul
+                each docin in docin_list
+                    li 
+                        p= docin.name
+                else
+                    li ไม่มีรายการหนังสือรับ.

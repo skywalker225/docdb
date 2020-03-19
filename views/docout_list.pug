@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    include index.pug
+    .container
+        .row
+            h2= sub_title
+            a(href='/docout_add') เพิ่ม
+        .row
+            ul
+                each docout in docout_list
+                    li 
+                        p= docout.name
+                else
+                    li ไม่มีรายการหนังสือส่ง.
