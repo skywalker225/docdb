@@ -2,6 +2,7 @@ var express = require('express');
 const bcrypt = require('bcrypt');
 var router = express.Router();
 const passport = require('passport');
+var title = 'NN Documents Recorder';
 
 const User = require('../models/user');
 
@@ -22,8 +23,9 @@ router.post('/register', async (req, res) => {
   });
 
   await user.save();
-  res.render('index', { user });
-  res.status(200).send('Success');
+  return res.redirect('/');
+  // res.render('index', {  title: title, user: req.user });
+  // res.status(200).send('Success');
 });
 
 router.post(

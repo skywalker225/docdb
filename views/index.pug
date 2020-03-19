@@ -4,7 +4,8 @@ block content
   .container
     .row
       .header
-        h1= title
+        h1 ระบบสารบรรณอิเล็กทรอนิกส์ 
+        h2 ที่ว่าการอำเภอนาน้อย จังหวัดน่าน
     if user
       .row
         .ten-twelths.column
@@ -22,7 +23,7 @@ block content
             .one-half.column
               p Hi #{user.name}
             .one-half.column
-              a(href="/logout") Logout
+              a(href="/logout" style='font-size: large') Logout
     else
       .row
         a(class="btn btn-link",, href="/login") Please login !

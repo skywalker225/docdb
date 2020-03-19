@@ -92,6 +92,7 @@ centered.column, .centered.column:first-child {
 .one-fourth.column { 
   width: 23.5%;
   background-color: #22333B;
+  font-size: x-large;
 } /* 100% - 3 gutters = 94% / 4 columns = 23.5% */
 .three-fourths.column { 
   width: 74.5%; 
