@@ -5,33 +5,16 @@ html
     title= title
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm', crossorigin='anonymous')
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    //- Addition
+    //- link(rel='icon', type='image/png', href='/table_responsive/images/icons/favicon.ico')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/vendor/bootstrap/css/bootstrap.min.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/vendor/animate/animate.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/vendor/select2/select2.min.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/vendor/perfect-scrollbar/perfect-scrollbar.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/css/util.css')
+    //- link(rel='stylesheet', type='text/css', href='/table_responsive/css/main.css')
+
   body
     block content
-    
-    //- .container
-    //-   .row
-    //-     .header
-    //-       h1= title
-    //-   if user
-    //-     .row
-    //-       .ten-twelths.column
-    //-         .row
-    //-           .one-fourth.column
-    //-             a(href='/') หน้าหลัก
-    //-           .one-fourth.column
-    //-             a(href='/') หน่วยงานนอก
-    //-           .one-fourth.column
-    //-             a(href='/') หน่วยงานใน
-    //-           .one-fourth.column
-    //-             a(href='/') ETC
-    //-       .two-twelths.column
-    //-         .row
-    //-           .one-half.column
-    //-             p Hi #{user.name}
-    //-           .one-half.column
-    //-             a(href="/logout") Logout
-    //-     .row
-    //-       block content
-    //-   else
-    //-     .row
-    //-       a(class="btn btn-link",, href="/login") Please login !

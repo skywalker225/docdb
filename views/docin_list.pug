@@ -7,9 +7,31 @@ block content
             h2= sub_title
             a(href='/docin_add') เพิ่ม
         .row
-            ul
+            table(style='width:100%', border='1')
+                thead
+                    tr
+                        td เรื่อง
+                        td จาก
+                        td ถึง
+                        td ระดับความเร่งด่วน
+                        td ระดับความลับ
+                        td ผู้ปฏิบัติ
+                        td ผู้รับ
                 each docin in docin_list
-                    li 
-                        p= docin.doc_title
+                    tbody
+                        tr
+                            td= docin.doc_title
+                            td= docin.doc_from
+                            td= docin.doc_to
+                            td= docin.doc_urgency
+                            td= docin.doc_level
+                            td= docin.responsible
+                            td= docin.record_holder
                 else
-                    li ไม่มีรายการหนังสือรับ.
+                    p 'ไม่มีรายการหนังสือรับ.'
+
+    //- script(src='/table_responsive/vendor/jquery/jquery-3.2.1.min.js')
+    //- script(src='/table_responsive/vendor/bootstrap/js/popper.js')
+    //- script(src='/table_responsive/vendor/bootstrap/js/bootstrap.min.js')
+    //- script(src='/table_responsive/vendor/select2/select2.min.js')
+    //- script(src='/table_responsive/js/main.js')
