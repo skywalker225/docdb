@@ -4,7 +4,7 @@ block content
     include index.pug
     .container
         .form-containter
-            form(class="form-doc" method="POST" action="/docins/add")
+            form(class="form-doc" method="POST" enctype='multipart/form-data' action="/docins/add")
                 h2 เพิ่มรายการหนังสือรับ
 
                 .form-group
@@ -66,9 +66,13 @@ block content
                     label(for="comment") หมายเหตุ:
                     input(type="text" name="comment" id="comment" class="form-control" placeholder="หมายเหตุ" required)
 
+                //- .form-group
+                //-     label(for="doc") เอกสาร:
+                //-     input(type="text" name="doc" id="doc" class="form-control" placeholder="อัพโหลดเอกสาร" required)
+
                 .form-group
-                    label(for="doc") เอกสาร:
-                    input(type="text" name="doc" id="doc" class="form-control" placeholder="อัพโหลดเอกสาร" required)
+                    label(for="pdf_file") อัพโหลดเอกสาร:
+                    input(type="file" name="pdf_file" id="pdf_file" class="form-control" placeholder="PDF File")
 
                 button(class="btn btn-primary btn-block" type="submit") เพิ่ม
 

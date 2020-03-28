@@ -15,7 +15,10 @@ var localsRouter = require('./routes/locals');
 var docinsRouter = require('./routes/docins');
 var docoutsRouter = require('./routes/docouts');
 
+
 var app = express();
+app.locals.moment = require('moment');
+
 
 require('./db');
 const User = require('./models/user');

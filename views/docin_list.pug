@@ -15,8 +15,11 @@ block content
                         td ถึง
                         td ระดับความเร่งด่วน
                         td ระดับความลับ
+                        td ลงวันที่
+                        td เอกสาร
                         td ผู้ปฏิบัติ
                         td ผู้รับ
+                        td วันที่รับ
                 each docin in docin_list
                     tbody
                         tr
@@ -25,8 +28,14 @@ block content
                             td= docin.doc_to
                             td= docin.doc_urgency
                             td= docin.doc_level
+                            td= moment(docin.doc_date).format('DD-MM-YYYY')
+                            td
+                                a(href='/download_file?doc_path=' + docin.doc) ดาวน์โหลด
                             td= docin.responsible
                             td= docin.record_holder
+                            td= moment(docin.record_date).format('DD-MM-YYYY')
+
+                            //- td= docin.record_date
                 else
                     p 'ไม่มีรายการหนังสือรับ.'
 

@@ -1,0 +1,26 @@
+extend layout
+
+block content
+    include index.pug
+    .container
+        .form-containter
+            form(class="form-doc" method="POST" enctype='multipart/form-data' action="/upload_file")
+                h2 Simple Multer Upload Example
+
+                .form-group
+                    label(for="pdf_file" class="sr-only") PDF File
+                    input(type="file" name="pdf_file" id="pdf_file" class="form-control" placeholder="PDF File")
+
+                button(class="btn btn-primary btn-block" type="submit") Upload
+
+                if message
+                    .aleart.alert-danger #{message}
+
+
+//- head
+//-   title Simple Multer Upload Example
+//-   meta(charset='UTF-8')
+//-   meta(name='viewport' content='width=device-width, initial-scale=1')
+//-   form(action='/'  method='post')
+//-     input(type='file' name='file-to-upload')
+//-     input(type='submit' value='Upload')
