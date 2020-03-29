@@ -7,9 +7,9 @@ block content
             form(class="form-doc" method="POST" enctype='multipart/form-data' action="/docins/add")
                 h2 เพิ่มรายการหนังสือรับ
 
-                .form-group
-                    label(for="record") เลขทะเบียนส่ง:
-                    input(type="text" name="record" id="record" class="form-control" placeholder="เลขทะเบียนส่ง" required)
+                //- .form-group
+                //-     label(for="record") เลขทะเบียนส่ง:
+                //-     input(type="text" name="record" id="record" class="form-control" placeholder="เลขทะเบียนส่ง" required)
 
                 .form-group
                     label(for="doc_no") ที่(หนังสือ):
@@ -28,8 +28,8 @@ block content
                 .form-group
                     label(for="doc_to") หนังสือส่งถึง:
                     select(name="doc_to", id="doc_level" class="form-control")
-                        each val in ['นายอำเภอ' , 'อื่นๆ']
-                            option=val
+                        each doffice in doffice_list
+                            option=doffice.name
 
                 .form-group
                     label(for="doc_title") หนังสือเรื่อง:

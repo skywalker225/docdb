@@ -5,23 +5,23 @@ block content
     .container
         .row
             h2= sub_title
-            a(href='/itn_add') เพิ่ม
+            a(href='/doffice_add') เพิ่ม
         .row
-            if (itn_list.length)
+            if (doffice_list.length)
                 table(style='width:50%', border='1')
                     thead
                         tr
                             td ลำดับ
-                            td ชื่อหน่วยงานภายใน
+                            td ชื่อที่ว่าการฯ
                             //- td แก้ไข
                             td Action
-                    each itn, index in itn_list
+                    each doffice, index in doffice_list
                         tbody
                             tr
                                 td #{index + 1}
-                                td= itn.name
+                                td= doffice.name
                                 //- td= แก้ไข
                                 td
-                                    a(href='/itn_del/' + itn._id) ลบ
+                                    a(href='/doffice_del/' + doffice._id) ลบ
             else
-                p 'ไม่มีรายชื่อของหน่วยงานภายใน.'
+                p 'ไม่มีรายชื่อของชื่อที่ว่าการฯ.'

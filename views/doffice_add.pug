@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    include index.pug
+    .container
+        .row
+            .form-containter
+                form(method="POST" action="/doffices/add")
+                    h2 เพิ่มที่ว่าการฯ
+
+                    .form-group
+                        label(for="name" class="sr-only") ชื่อที่ว่าการฯ
+                        input(type="text" name="name" id="name" class="form-control" placeholder="ชื่อที่ว่าการฯ" required)
+
+                    button(class="btn btn-primary btn-block" type="submit") เพิ่ม
+
+                    if message
+                        .aleart.alert-danger #{message}

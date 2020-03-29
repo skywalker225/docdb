@@ -7,40 +7,37 @@ block content
             h2= sub_title
             a(href='/docin_add') เพิ่ม
         .row
-            table(style='width:100%', border='1')
-                thead
-                    tr
-                        td เรื่อง
-                        td จาก
-                        td ถึง
-                        td ระดับความเร่งด่วน
-                        td ระดับความลับ
-                        td ลงวันที่
-                        td เอกสาร
-                        td ผู้ปฏิบัติ
-                        td ผู้รับ
-                        td วันที่รับ
-                each docin in docin_list
-                    tbody
+            if (docin_list.length)
+                table(style='width:100%', border='1')
+                    thead
                         tr
-                            td= docin.doc_title
-                            td= docin.doc_from
-                            td= docin.doc_to
-                            td= docin.doc_urgency
-                            td= docin.doc_level
-                            td= moment(docin.doc_date).format('DD-MM-YYYY')
-                            td
-                                a(href='/download_file?doc_path=' + docin.doc) ดาวน์โหลด
-                            td= docin.responsible
-                            td= docin.record_holder
-                            td= moment(docin.record_date).format('DD-MM-YYYY')
+                            td ลำดับ
+                            td เรื่อง
+                            td จาก
+                            td ถึง
+                            td ระดับความเร่งด่วน
+                            td ระดับความลับ
+                            td ลงวันที่
+                            td เอกสาร
+                            td ผู้ปฏิบัติ
+                            td ผู้รับ
+                            td วันที่รับ
+                    each docin, index in docin_list
+                        tbody
+                            tr
+                                td #{index + 1}
+                                td= docin.doc_title
+                                td= docin.doc_from
+                                td= docin.doc_to
+                                td= docin.doc_urgency
+                                td= docin.doc_level
+                                td= moment(docin.doc_date).format('DD-MM-YYYY')
+                                td
+                                    a(href='/download_file?doc_path=' + docin.doc) ดาวน์โหลด
+                                td= docin.responsible
+                                td= docin.record_holder
+                                td= moment(docin.record_date).format('DD-MM-YYYY')
 
-                            //- td= docin.record_date
-                else
-                    p 'ไม่มีรายการหนังสือรับ.'
-
-    //- script(src='/table_responsive/vendor/jquery/jquery-3.2.1.min.js')
-    //- script(src='/table_responsive/vendor/bootstrap/js/popper.js')
-    //- script(src='/table_responsive/vendor/bootstrap/js/bootstrap.min.js')
-    //- script(src='/table_responsive/vendor/select2/select2.min.js')
-    //- script(src='/table_responsive/js/main.js')
+                                //- td= docin.record_date
+            else
+                p 'ไม่มีรายการหนังสือรับ.'

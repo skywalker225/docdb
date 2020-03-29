@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Doffice = require('../models/distoffice');
 var Itndept = require('../models/internaldept');
 var Localdept = require('../models/localdept');
 var Docin = require('../models/docin');
@@ -47,9 +48,10 @@ router.get('/docin_list', isLoggedIn, async (req, res, next) => {
 })
 
 router.get('/docin_add', isLoggedIn, async (req, res, next) => {
-  const locals = await Localdept.find({});
-  const itns = await Itndept.find({});
-  res.render('docin_add', { title: title, user: req.user, local_list: locals, itn_list: itns });
+  const locals = await Localdept.find({}).sort({ name: 1 });
+  const itns = await Itndept.find({}).sort({ name: 1 });
+  const doffices = await Doffice.find({}).sort({ name: 1 });
+  res.render('docin_add', { title: title, user: req.user, local_list: locals, itn_list: itns, doffice_list: doffices });
 })
 
 
@@ -59,11 +61,36 @@ router.get('/docout_list', isLoggedIn, async (req, res, next) => {
   res.render('docout_list', { title: title, user: req.user, sub_title: 'รายชื่อหนังสือส่ง', docout_list: docouts })
 })
 
+router.get('/docout_add', isLoggedIn, async (req, res, next) => {
+  const locals = await Localdept.find({}).sort({ name: 1 });
+  const itns = await Itndept.find({}).sort({ name: 1 });
+  const doffices = await Doffice.find({}).sort({ name: 1 });
+  res.render('docout_add', { title: title, user: req.user, local_list: locals, itn_list: itns, doffice_list: doffices });
+})
+
+
+
+// District Office
+router.get('/doffice_list', isLoggedIn, async (req, res, next) => {
+  const doffices = await Doffice.find({}).sort({ name: 1 });
+  res.render('doffice_list', { title: title, user: req.user, sub_title: 'รายชื่อที่ว่าการฯ', doffice_list: doffices })
+})
+
+router.get('/doffice_add', isLoggedIn, (req, res, next) => {
+  res.render('doffice_add', { title: title, user: req.user });
+});
+
+router.get('/doffice_del/:id', isLoggedIn, async (req, res, next) => {
+  const { id } = req.params.id;
+  await Doffice.findOneAndDelete(id);
+  res.redirect('/doffice_list');
+});
+
 
 
 // Local Dept
 router.get('/local_list', isLoggedIn, async (req, res, next) => {
-  const locals = await Localdept.find({});
+  const locals = await Localdept.find({}).sort({ name: 1 });
   res.render('local_list', { title: title, user: req.user, sub_title: 'รายชื่อหน่วยงานภายนอก', local_list: locals })
 })
 
@@ -71,16 +98,28 @@ router.get('/local_add', isLoggedIn, (req, res, next) => {
   res.render('local_add', { title: title, user: req.user });
 });
 
+router.get('/local_del/:id', isLoggedIn, async (req, res, next) => {
+  const { id } = req.params.id;
+  await Localdept.findOneAndDelete(id);
+  res.redirect('/local_list');
+});
+
 
 
 // Internal Dept
 router.get('/itn_list', isLoggedIn, async (req, res, next) => {
-  const itns = await Itndept.find({});
+  const itns = await Itndept.find({}).sort({ name: 1 });
   res.render('itn_list', { title: title, user: req.user, sub_title: 'รายชื่อหน่วยงานภายใน', itn_list: itns })
 })
 
 router.get('/itn_add', isLoggedIn, (req, res, next) => {
   res.render('itn_add', { title: title, user: req.user });
+});
+
+router.get('/itn_del/:id', isLoggedIn, async (req, res, next) => {
+  const { id } = req.params.id;
+  await Itndept.findOneAndDelete(id);
+  res.redirect('/itn_list');
 });
 
 

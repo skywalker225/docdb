@@ -10,6 +10,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var dofficesRouter = require('./routes/doffices');
 var itnsRouter = require('./routes/itns');
 var localsRouter = require('./routes/locals');
 var docinsRouter = require('./routes/docins');
@@ -76,6 +77,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/doffices', dofficesRouter);
 app.use('/itns', itnsRouter);
 app.use('/locals', localsRouter);
 app.use('/docins', docinsRouter);

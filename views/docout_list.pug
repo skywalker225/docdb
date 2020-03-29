@@ -7,9 +7,37 @@ block content
             h2= sub_title
             a(href='/docout_add') เพิ่ม
         .row
-            ul
-                each docout in docout_list
-                    li 
-                        p= docout.name
-                else
-                    li ไม่มีรายการหนังสือส่ง.
+            if (docout_list.length)
+                table(style='width:100%', border='1')
+                    thead
+                        tr
+                            td ลำดับ
+                            td เรื่อง
+                            td ถึง
+                            td จาก
+                            td ระดับความเร่งด่วน
+                            td ระดับความลับ
+                            td ลงวันที่
+                            td เอกสาร
+                            td ผู้ปฏิบัติ
+                            td ผู้ส่ง
+                            td วันที่ส่ง
+                    each docout, index in docout_list
+                        tbody
+                            tr
+                                td #{index + 1}
+                                td= docout.doc_title
+                                td= docout.doc_to
+                                td= docout.doc_from
+                                td= docout.doc_urgency
+                                td= docout.doc_level
+                                td= moment(docout.doc_date).format('DD-MM-YYYY')
+                                td
+                                    a(href='/download_file?doc_path=' + docout.doc) ดาวน์โหลด
+                                td= docout.responsible
+                                td= docout.record_holder
+                                td= moment(docout.record_date).format('DD-MM-YYYY')
+
+                                //- td= docout.record_date
+            else
+                p 'ไม่มีรายการหนังสือส่ง.'
